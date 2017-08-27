@@ -27,7 +27,7 @@ io.on('connection', function(socket) {
 
             //全局事件 
             socket.broadcast.emit('addList', d.content);
-
+           //取出缓存消息
             client.LRANGE(d.content.uid,'0', '-1', function (err, object) {
                   console.log(object)
                       io.sockets.sockets[socket.id].emit('setChatCache', object);
